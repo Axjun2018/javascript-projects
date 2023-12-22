@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #242333;
+    color: #fff;
+
+    /* flex in column direction */
+    display: flex;
+    flex-direction: column;
+
+    /* align content at center of webpage*/
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+}
+
+
+.movie-container {
+    margin: 20px 0; /*20px: top & bottom, 0: left & right*/
+}
+
+/*.class tag*/
+.movie-container select {
+    background-color: #fff;
+    border: 0;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-left: 10px;
+    padding: 5px 15px 5px 15px;
+    /* compile with operating system style*/
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.container {
+    perspective: 1000px; /* 观察者与 z=0 平面的距离, z越大：离平面越远越趋于平面，反之离平面越近越畸变，z可为负数，畸变方向相反: https://developer.mozilla.org/zh-CN/docs/Web/CSS/perspective */
+    margin-bottom: 30px;
+}
+
+.seat {
+    background-color: #444451;
+    height: 12px;
+    width: 15px;
+    margin: 3px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/*.class.classAfterWhitespace*/
+.seat.selected {
+    background-color: #6feaf6; /*if seat has been selected, change color to green*/
+}
+
+.seat.occupied {
+    background-color: #fff;
+}
+
+/* nth-of-type(n): from left to right 选顺数第n位seat class*/
+.seat:nth-of-type(2){  /*choose 2nd seat each row, add margin right*/
+    margin-right: 18px
+}
+/* nth-of-type: from right to left 选顺倒第n位seat class*/
+.seat:nth-last-of-type(2){  /*choose 2nd seat each row, add margin right*/
+    margin-left: 18px
+}
+
+/* when hover unoccupied seat, 
+chang cursor to pointer,
+scale it bigger
+*/
+.seat:not(.occupied):hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+/* seats in showcase don't need hover effects */
+.showcase .seat.seat:not(.occupied):hover {
+    cursor: default;
+    transform: scale(1);
+}
+
+.showcase {
+    background-color: rgba(0,0,0,0.1);
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #777;
+    list-style-type: none; /* remove list bullet points */
+    display: flex;
+    justify-content: space-between;
+}
+
+.showcase li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+}
+
+.showcase li small {
+    margin-left: 2px; /* add margin between seat icon and small text */
+}
+
+.row {
+    display: flex;
+}
+
+/* movie screen */
+.screen {
+    background-color: #fff;
+    height: 70px;
+    width: 100%;
+    margin: 15px 0;
+    transform: rotateX(-45deg);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+}
+
+p.text {
+    margin: 5px 0
+}
+
+p.text span {
+    color: #6feaf6;
+}
